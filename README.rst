@@ -27,9 +27,9 @@ like PyCharm would provide meaningful auto-completion and support.
 
 So what is this project not going to do?
 
--  At this time I don’t expect to create a Python alternative to the
+-  At this time I don't expect to create a Python alternative to the
    Java or JavaScript APIs.
--  Support every possible feature - instead I’m focusing on simplicity.
+-  Support every possible feature - instead I'm focusing on simplicity.
 
 This is a community-driven project to build a Python wrapper for the
 MarkLogic REST API.
@@ -50,7 +50,7 @@ Installing MarkLogic
 1. Install MarkLogic (http://developer.marklogic.com/products)
 
 2. Follow the very simple instructions to install the MarkLogic server.
-   (Note that if you’re using a RedHat based distro, you should install
+   (Note that if you're using a RedHat based distro, you should install
    LSB and include –no-deps when installing the RPM if you get a warning
    about GLIBC 2.4).
 
@@ -76,8 +76,22 @@ End-user installation
 
    pip install git+git://github.com/paul-hoehne/MarkLogic_Python.git#egg=marklogic
 
+Running the tests and examples
+------------------------------
+
+Of course some tests cannot always mock a MarkLogic server.
+
+Please provide an environment variable named ``MARKLOGIC_TEST_CONNECTION``
+that has the following form:
+
+   hostname-or-ip 
+
+.. note::
+
+   Never ever provide the 
+
 Support
 =======
 
-Support for the MarkLogic\_Python project comes from the developer
+Support for the MarkLogic_Python project comes from the developer
 community.
