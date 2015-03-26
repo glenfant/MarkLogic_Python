@@ -5,8 +5,10 @@ from marklogic.models.database import Database
 from marklogic.models.connection import Connection
 from marklogic.models.server import HttpServer
 from marklogic.models.index import ElementRange, ElementAttributeRange
+from resources import test_connection as tc
 
-conn = Connection("localhost", HTTPDigestAuth("admin", "admin"))
+auth = HTTPDigestAuth(tc.username, tc.password)
+conn = Connection(tc.hostname, auth)
 
 db = Database("test-one")
 db.create(conn).load_file(conn, "example_doc.json", "/test/document.json", ["example", "collection"])

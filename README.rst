@@ -79,16 +79,50 @@ End-user installation
 Running the tests and examples
 ------------------------------
 
-Of course some tests cannot always mock a MarkLogic server.
+Test ML server
+~~~~~~~~~~~~~~
 
-Please provide an environment variable named ``MARKLOGIC_TEST_CONNECTION``
-that has the following form:
+Of course some tests cannot always mock a MarkLogic server. That's why you
+need for most unit test a running ML server.
 
-   hostname-or-ip 
+Please provide the access infomation to that server as an environment variable
+named ``MARKLOGIC_TEST_CONNECTION`` that has the following EBNF form:
 
-.. note::
+.. code:: ebnf
 
-   Never ever provide the 
+   MARKLOGIC_TEST_CONNECTION = hostname, ":", port, ":", mgmt-port, ":", username, ":", password ;
+
+:hostname: Hostname or IP of your ML server
+:port: REST and data port
+:mgmt-port: Port for management commands
+:username: Admin username
+:password: Admin password
+
+Examples:
+
+.. code:: console
+
+   export MARKLOGIC_TEST_CONNECTION=my.marklogic.hostname:8000:8002:admin:secret
+   export MARKLOGIC_TEST_CONNECTION=127.0.0.1:8000:8002:admin:admin
+
+.. danger::
+
+   Never ever provide the data of a production ML server !
+
+Running the tests
+~~~~~~~~~~~~~~~~~
+
+A tests module that's in the ``tests/`` directory:
+
+.. code:: console
+
+   python -m unittest tests.databases.test_field_range
+
+All tests:
+
+.. code:: console
+
+   python -m unittest discover -s tests
 
 Support
 =======
